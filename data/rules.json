@@ -1,0 +1,75 @@
+{
+  "version": "mock-rules-2026.10",
+  "rules": [
+    {
+      "id": "FINRA-2210",
+      "title": "Guaranteed returns",
+      "description": "Communications may not promise, guarantee or assure a specific rate of return or investment outcome.",
+      "severity": "CRITICAL",
+      "applies_to": ["*"]
+    },
+    {
+      "id": "FINRA-2210-RISK",
+      "title": "Claims of no risk",
+      "description": "Communications may not state or imply that an investment is risk-free, safe from loss, or carries no market risk.",
+      "severity": "CRITICAL",
+      "applies_to": ["*"]
+    },
+    {
+      "id": "FINRA-2210-PROJ",
+      "title": "Performance projections",
+      "description": "Communications may not predict or project future investment performance (e.g. 'will double', 'expect to earn 25%').",
+      "severity": "HIGH",
+      "applies_to": ["*"]
+    },
+    {
+      "id": "FINRA-2210-EXAG",
+      "title": "Exaggerated or promissory claims",
+      "description": "Communications may not contain exaggerated, unwarranted, promissory or superlative claims ('can't lose', 'best investment ever', 'sure thing').",
+      "severity": "HIGH",
+      "applies_to": ["*"]
+    },
+    {
+      "id": "SEC-206-4-1-PERF",
+      "title": "Cherry-picked past performance",
+      "description": "Past performance figures must not be presented selectively or without the required time periods and context.",
+      "severity": "MEDIUM",
+      "applies_to": ["NEWSLETTER", "BROCHURE", "INVESTMENT_AGREEMENT"]
+    },
+    {
+      "id": "SEC-206-4-1-TEST",
+      "title": "Undisclosed testimonials",
+      "description": "Client testimonials or endorsements require disclosure of whether the person was compensated and any conflicts.",
+      "severity": "MEDIUM",
+      "applies_to": ["NEWSLETTER", "BROCHURE"]
+    },
+    {
+      "id": "FINRA-2111",
+      "title": "Blanket suitability claims",
+      "description": "Products may not be described as suitable for all investors or recommended without regard to the client's profile.",
+      "severity": "MEDIUM",
+      "applies_to": ["*"]
+    },
+    {
+      "id": "FINRA-2210-URG",
+      "title": "High-pressure urgency",
+      "description": "Communications should not use high-pressure or artificial-urgency sales tactics ('act now', 'only 24 hours left').",
+      "severity": "LOW",
+      "applies_to": ["NEWSLETTER", "BROCHURE"]
+    },
+    {
+      "id": "SEC-FEE",
+      "title": "Misleading fee claims",
+      "description": "Communications may not claim an investment or account has no fees or is free when fees or expenses apply.",
+      "severity": "HIGH",
+      "applies_to": ["*"]
+    },
+    {
+      "id": "REG-BI-CONFLICT",
+      "title": "Denial of conflicts of interest",
+      "description": "Firms may not claim to have no conflicts of interest; material conflicts must be disclosed under Regulation Best Interest.",
+      "severity": "MEDIUM",
+      "applies_to": ["ACCOUNT_AGREEMENT", "INVESTMENT_AGREEMENT", "BROCHURE"]
+    }
+  ]
+}

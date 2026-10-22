@@ -1,0 +1,26 @@
+# Production-style:  cp .env.example .env  (fill SECRET_KEY, VAULT_KEY, BOOTSTRAP_ADMIN_PASSWORD)  && docker compose up -d
+# Local demo:        APP_ENV=development docker compose up    (demo users, samples, dev tools; no secrets needed)
+services:
+  app:
+    build: .
+    image: compliance-review:latest
+    ports:
+      - "${PORT:-8077}:8077"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      COOKIE_SECURE: ${COOKIE_SECURE:-}
+    volumes:
+      - compliance-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+    stop_grace_period: 25s
+
+volumes:
+  compliance-data:

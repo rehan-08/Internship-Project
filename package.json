@@ -1,0 +1,18 @@
+{
+  "name": "compliance-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI compliance document review: PII privacy wall, grounded inspection agent, absence engine, precedents and eval harness.",
+  "scripts": {
+    "setup": "node scripts/setup.cjs",
+    "dev": "node scripts/py.cjs -m uvicorn app.main:create_app --factory --port 8077 --reload",
+    "start": "node scripts/py.cjs -m uvicorn app.main:create_app --factory --port 8077",
+    "test": "node scripts/py.cjs -m pytest -q",
+    "eval": "node scripts/py.cjs -m eval.run_eval",
+    "eval:corpus": "node scripts/py.cjs -m eval.build_corpus",
+    "samples": "node scripts/py.cjs scripts/make_samples.py",
+    "cli": "node scripts/py.cjs -m app.cli",
+    "docker:build": "docker build -t compliance-review:latest .",
+    "docker:demo": "docker compose up --build"
+  }
+}

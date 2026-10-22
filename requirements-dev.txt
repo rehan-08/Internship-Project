@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest==9.1.1
+fpdf2==2.8.9
+# Embedded PostgreSQL for `python scripts/test_postgres.py` (optional; CI uses a Postgres service)
+pgserver==0.1.4

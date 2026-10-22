@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compliance Review</title>
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fbfbfa">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231c1f26'/%3E%3Cpath fill='none' stroke='white' stroke-width='1.8' d='M12 5.2 7 7.1v3.8c0 3.1 2.1 5.9 5 6.8 2.9-.9 5-3.7 5-6.8V7.1l-5-1.9Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M12 3 5 5.7v5.2c0 4.3 2.9 8.2 7 9.4 4.1-1.2 7-5.1 7-9.4V5.7L12 3Z"/></svg></span>
+    <span class="wordmark">Compliance Review</span>
+  </div>
+  <div class="spacer"></div>
+  <span class="wall" title="Client PII is replaced with tokens before any AI call; every outbound request is scanned before it is sent.">
+    <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 22q-.8 0-1.4-.6T4 20V10q0-.8.6-1.4T6 8h1V6q0-2.1 1.5-3.5T12 1q2.1 0 3.5 1.5T17 6v2h1q.8 0 1.4.6T20 10v10q0 .8-.6 1.4T18 22H6Zm3-14h6V6q0-1.3-.9-2.1T12 3q-1.3 0-2.1.9T9 6v2Z"/></svg>
+    PII masking on
+  </span>
+  <button class="icon-btn" id="themeBtn" title="Toggle dark mode" aria-label="Toggle dark mode">
+    <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+  </button>
+  <div class="user" id="userMenu" hidden>
+    <span class="avatar" id="avatar">?</span>
+    <span class="uname"><b id="userName"></b><small id="userRole"></small></span>
+    <button class="icon-btn" id="logoutBtn" title="Sign out" aria-label="Sign out">
+      <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 21q-.8 0-1.4-.6T3 19V5q0-.8.6-1.4T5 3h7v2H5v14h7v2H5Zm11-4-1.4-1.4 2.6-2.6H9v-2h8.2l-2.6-2.6L16 7l5 5-5 5Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- Sidebar -->
+  <aside class="pane left">
+    <div class="side-actions">
+      <label class="btn primary wide" id="dropzone" for="fileInput">
+        <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z"/></svg>
+        New review
+        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.md,.xlsx,.csv" hidden>
+      </label>
+      <select id="docType" class="quiet-select" aria-label="Document type for the next upload">
+        <option value="">Type: detect automatically</option>
+        <option value="INVESTMENT_AGREEMENT">Type: investment agreement</option>
+        <option value="ACCOUNT_AGREEMENT">Type: account agreement</option>
+        <option value="NEWSLETTER">Type: newsletter</option>
+        <option value="BROCHURE">Type: brochure</option>
+      </select>
+    </div>
+
+    <section>
+      <h4 class="section-label">Queue <span class="count" id="queueCount"></span></h4>
+      <ul id="queue" class="queue"></ul>
+    </section>
+    <section id="samplesSection">
+      <h4 class="section-label">Samples</h4>
+      <div id="samples" class="sample-list"></div>
+    </section>
+    <div class="sys-meta" id="engineChips"></div>
+  </aside>
+
+  <!-- Document -->
+  <section class="pane center" id="center">
+    <div id="empty" class="empty">
+      <header class="empty-head">
+        <h1>Review queue</h1>
+        <p>Select a document from the queue, or add a new one to start a review.</p>
+      </header>
+      <dl class="stats" id="queueStats">
+        <div><dt>Pending</dt><dd data-stat="PENDING_REVIEW">–</dd></div>
+        <div><dt>Approved</dt><dd data-stat="APPROVED">–</dd></div>
+        <div><dt>Rejected</dt><dd data-stat="REJECTED">–</dd></div>
+        <div><dt>Total</dt><dd data-stat="TOTAL">–</dd></div>
+      </dl>
+      <label class="drop-target" for="fileInput" id="dropTarget">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 16V7.8l-2.6 2.6L7 9l5-5 5 5-1.4 1.4L13 7.8V16h-2Zm-6 4q-.8 0-1.4-.6T3 18v-3h2v3h14v-3h2v3q0 .8-.6 1.4T19 20H5Z"/></svg>
+        <span><b>Drop a document here</b> or <u>browse</u></span>
+        <small id="uploadLimits">PDF, DOCX, XLSX, CSV or TXT</small>
+      </label>
+      <p class="sample-link"><button class="linklike" id="tryDemo">Open the sample investment agreement</button></p>
+      <div class="empty-foot">
+        <section>
+          <h3>What happens in a review</h3>
+          <ol class="steps">
+            <li><b>Masking.</b> Client names, SSNs, account numbers, contact details and personal balances are replaced with tokens before any text leaves the server.</li>
+            <li><b>Inspection.</b> Each section is checked against the active SEC/FINRA rules. A finding is kept only if its quote appears word for word in the document.</li>
+            <li><b>Disclosures.</b> Required disclosures for the document type are matched by meaning, not keywords, and missing ones are listed.</li>
+            <li><b>Decision.</b> You approve or reject. The AI can flag issues but cannot decide.</li>
+          </ol>
+        </section>
+        <section>
+          <h3>Keyboard</h3>
+          <dl class="keys">
+            <div><dt><kbd>J</kbd> <kbd>K</kbd></dt><dd>Next / previous finding</dd></div>
+            <div><dt><kbd>Esc</kbd></dt><dd>Clear selection</dd></div>
+            <div><dt><kbd>Enter</kbd></dt><dd>Jump to the focused finding</dd></div>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <div id="docView" hidden>
+      <div class="doc-head">
+        <div class="doc-title">
+          <span class="ftype" id="docFtype"></span>
+          <div>
+            <h2 id="docTitle"></h2>
+            <div class="meta" id="docMeta"></div>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <div class="seg" role="group" aria-label="Text shown">
+            <button data-view="real" class="on" title="Client details shown">Original</button>
+            <button data-view="masked" title="Exactly what the AI received">AI view</button>
+          </div>
+          <button class="icon-btn subtle" id="rerun" title="Re-run analysis" aria-label="Re-run analysis">
+            <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 20q-3.3 0-5.6-2.3T4 12q0-3.3 2.3-5.6T12 4q1.7 0 3.3.7T18 6.6V4h2v7h-7V9h4.2q-.8-1.4-2.2-2.2T12 6Q9.5 6 7.8 7.8T6 12q0 2.5 1.8 4.3T12 18q1.9 0 3.4-1.1t2.1-2.9h2.1q-.7 2.7-2.9 4.3T12 20Z"/></svg>
+          </button>
+          <button class="icon-btn subtle" id="deleteDoc" title="Delete document and destroy its PII" aria-label="Delete document" hidden>
+            <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 21q-.8 0-1.4-.6T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .8-.6 1.4T17 21H7Zm2-4h2V8H9v9Zm4 0h2V8h-2v9Z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="banners"></div>
+      <div class="doc-wrap">
+        <article id="docText" class="doc-text"></article>
+        <div class="rail" id="rail" aria-label="Findings by position in the document"></div>
+      </div>
+      <p class="hint"><kbd>J</kbd> <kbd>K</kbd> step through findings &middot; <kbd>Esc</kbd> clear</p>
+    </div>
+  </section>
+
+  <!-- Findings -->
+  <aside class="pane right" id="rightPane" hidden>
+    <div id="verdict" class="verdict"></div>
+    <nav class="tabs" role="tablist">
+      <button data-tab="findings" class="active">Findings <span class="count" id="cFindings"></span></button>
+      <button data-tab="precedents">Precedents <span class="count" id="cPrec"></span></button>
+      <button data-tab="audit">Audit log</button>
+      <button data-tab="dev" id="devTabBtn">Privacy</button>
+    </nav>
+    <div class="right-body">
+      <div class="tab" id="tab-findings"><div id="findings"></div></div>
+      <div class="tab" id="tab-precedents" hidden></div>
+      <div class="tab" id="tab-audit" hidden></div>
+      <div class="tab" id="tab-dev" hidden>
+        <section class="card">
+          <div class="row space"><h3>Outbound requests</h3><button class="btn small" id="refreshPayloads">Refresh</button></div>
+          <p class="muted small">Every request sent to the AI provider, exactly as sent, checked against all known client values.</p>
+          <div id="leakBadge"></div>
+          <div id="payloads"></div>
+        </section>
+        <section class="card">
+          <h3>Fault simulation</h3>
+          <p class="muted small">Make the mock model misbehave, then re-run the analysis.</p>
+          <label class="field">Model behaviour
+            <select id="faultMode">
+              <option value="none">Healthy</option>
+              <option value="rate_limit">HTTP 429 twice per call</option>
+              <option value="timeout">Timeout on first attempt</option>
+              <option value="malformed">Malformed JSON (fenced, trailing commas)</option>
+              <option value="garbage">Prose instead of JSON on first attempt</option>
+              <option value="down">Provider down (503)</option>
+            </select>
+          </label>
+          <label class="field">Hallucination rate <b id="halluVal"></b>
+            <input type="range" id="hallu" min="0" max="1" step="0.05">
+          </label>
+        </section>
+      </div>
+    </div>
+    <footer class="decision" id="decisionBar">
+      <div id="lastDecision"></div>
+      <textarea id="notes" rows="1" placeholder="Note for the record (optional)"></textarea>
+      <div class="row">
+        <button class="btn reject" data-decision="REJECTED">Reject</button>
+        <button class="btn approve" data-decision="APPROVED">Approve</button>
+      </div>
+      <p class="decision-note">Recorded under your name with a timestamp. The AI cannot approve or reject.</p>
+    </footer>
+  </aside>
+</main>
+
+<div id="login" class="login" role="dialog" aria-modal="true" aria-labelledby="loginTitle" hidden>
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <div class="login-brand">
+      <span class="logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M12 3 5 5.7v5.2c0 4.3 2.9 8.2 7 9.4 4.1-1.2 7-5.1 7-9.4V5.7L12 3Z"/></svg></span>
+      <span class="wordmark">Compliance Review</span>
+    </div>
+    <h2 id="loginTitle">Sign in</h2>
+    <p class="muted">Use your officer account.</p>
+    <label class="field">Username<input id="loginUser" name="username" autocomplete="username" spellcheck="false" required></label>
+    <label class="field">Password<input id="loginPass" name="password" type="password" autocomplete="current-password" required></label>
+    <div id="loginError" class="login-error" role="alert" hidden></div>
+    <button class="btn primary wide" id="loginBtn" type="submit">Sign in</button>
+    <div id="demoHint" class="demo-hint" hidden></div>
+    <p class="login-foot">Access to client information is logged. Sessions end after a period of inactivity.</p>
+  </form>
+</div>
+<div id="tip" class="tip" hidden></div>
+<div id="toast" class="toast" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

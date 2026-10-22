@@ -1,0 +1,438 @@
+[
+  {
+    "file": "eval_01_account_agreement_clean.txt",
+    "doc_type": "ACCOUNT_AGREEMENT",
+    "clean_control": true,
+    "violations": [],
+    "missing_disclosures": []
+  },
+  {
+    "file": "eval_02_investment_agreement.txt",
+    "doc_type": "INVESTMENT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "The Momentum strategy gained 8% in 2025."
+      },
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "Our advisors have no conflicts of interest."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01"
+    ]
+  },
+  {
+    "file": "eval_03_newsletter.txt",
+    "doc_type": "NEWSLETTER",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "This portfolio is completely safe and carries no risk."
+      },
+      {
+        "rule_id": "SEC-FEE",
+        "text": "Enjoy zero commissions on every trade."
+      },
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "The Momentum strategy gained 40% in 2025."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01",
+      "DISC-09"
+    ]
+  },
+  {
+    "file": "eval_04_brochure.txt",
+    "doc_type": "BROCHURE",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "There is simply no way to lose money with this strategy."
+      },
+      {
+        "rule_id": "FINRA-2210-URG",
+        "text": "Only 3 spots left, so don't miss out!"
+      },
+      {
+        "rule_id": "FINRA-2210",
+        "text": "Your principal and a 18% yield are guaranteed by our firm."
+      },
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "We are completely conflict-free and unbiased in every recommendation."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01"
+    ]
+  },
+  {
+    "file": "eval_05_account_agreement.txt",
+    "doc_type": "ACCOUNT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2111",
+        "text": "It is the right choice for any investor, regardless of age."
+      },
+      {
+        "rule_id": "SEC-FEE",
+        "text": "There are no fees on any of our managed accounts."
+      },
+      {
+        "rule_id": "FINRA-2210",
+        "text": "Your returns are locked in at 12% per year no matter what happens."
+      },
+      {
+        "rule_id": "FINRA-2210-EXAG",
+        "text": "Get ready for explosive growth in your portfolio."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-05"
+    ]
+  },
+  {
+    "file": "eval_06_investment_agreement_clean.txt",
+    "doc_type": "INVESTMENT_AGREEMENT",
+    "clean_control": true,
+    "violations": [],
+    "missing_disclosures": []
+  },
+  {
+    "file": "eval_07_newsletter.txt",
+    "doc_type": "NEWSLETTER",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "Your money grows without any market risk."
+      },
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "Last year alone, the strategy was up 12 percent."
+      },
+      {
+        "rule_id": "FINRA-2210-URG",
+        "text": "Only 3 spots left, so don't miss out!"
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-09"
+    ]
+  },
+  {
+    "file": "eval_08_brochure.txt",
+    "doc_type": "BROCHURE",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "There is simply no way to lose money with this strategy."
+      },
+      {
+        "rule_id": "FINRA-2210-EXAG",
+        "text": "This is the best investment you will ever make."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01",
+      "DISC-09"
+    ]
+  },
+  {
+    "file": "eval_09_account_agreement.txt",
+    "doc_type": "ACCOUNT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "This portfolio is completely safe and carries no risk."
+      },
+      {
+        "rule_id": "FINRA-2111",
+        "text": "It is the right choice for any investor, regardless of age."
+      },
+      {
+        "rule_id": "SEC-FEE",
+        "text": "Trading is completely free for all clients."
+      },
+      {
+        "rule_id": "FINRA-2210-EXAG",
+        "text": "This is the best investment you will ever make."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01",
+      "DISC-07"
+    ]
+  },
+  {
+    "file": "eval_10_investment_agreement.txt",
+    "doc_type": "INVESTMENT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "We are completely conflict-free and unbiased in every recommendation."
+      },
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "Our flagship fund returned 12% last year."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-05"
+    ]
+  },
+  {
+    "file": "eval_11_newsletter_clean.txt",
+    "doc_type": "NEWSLETTER",
+    "clean_control": true,
+    "violations": [],
+    "missing_disclosures": []
+  },
+  {
+    "file": "eval_12_brochure.txt",
+    "doc_type": "BROCHURE",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "SEC-206-4-1-TEST",
+        "text": "\"This firm changed my life and doubled my savings.\" - Priya Chen, client since 2019"
+      },
+      {
+        "rule_id": "FINRA-2210-PROJ",
+        "text": "We expect investors to earn 40% next year."
+      },
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "Last year alone, the strategy was up 18 percent."
+      },
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "There is simply no way to lose money with this strategy."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01",
+      "DISC-03"
+    ]
+  },
+  {
+    "file": "eval_13_account_agreement.txt",
+    "doc_type": "ACCOUNT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "We are completely conflict-free and unbiased in every recommendation."
+      },
+      {
+        "rule_id": "SEC-FEE",
+        "text": "There are no fees on any of our managed accounts."
+      },
+      {
+        "rule_id": "FINRA-2210-PROJ",
+        "text": "By 2030 this account should be worth twice what you put in."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01"
+    ]
+  },
+  {
+    "file": "eval_14_investment_agreement.txt",
+    "doc_type": "INVESTMENT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "Our flagship fund returned 15% last year."
+      },
+      {
+        "rule_id": "FINRA-2210",
+        "text": "Your principal and a 15% yield are guaranteed by our firm."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-11"
+    ]
+  },
+  {
+    "file": "eval_15_newsletter.txt",
+    "doc_type": "NEWSLETTER",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "The Momentum strategy gained 8% in 2025."
+      },
+      {
+        "rule_id": "FINRA-2210-EXAG",
+        "text": "This is the best investment you will ever make."
+      },
+      {
+        "rule_id": "FINRA-2210-RISK",
+        "text": "There is simply no way to lose money with this strategy."
+      },
+      {
+        "rule_id": "FINRA-2210-PROJ",
+        "text": "The fund will double in value within three years."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-12"
+    ]
+  },
+  {
+    "file": "eval_16_brochure_clean.txt",
+    "doc_type": "BROCHURE",
+    "clean_control": true,
+    "violations": [],
+    "missing_disclosures": []
+  },
+  {
+    "file": "eval_17_account_agreement.txt",
+    "doc_type": "ACCOUNT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2111",
+        "text": "It is the right choice for any investor, regardless of age."
+      },
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "We are completely conflict-free and unbiased in every recommendation."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-05"
+    ]
+  },
+  {
+    "file": "eval_18_investment_agreement.txt",
+    "doc_type": "INVESTMENT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-EXAG",
+        "text": "This is the best investment you will ever make."
+      },
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "We are completely conflict-free and unbiased in every recommendation."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-01"
+    ]
+  },
+  {
+    "file": "eval_19_newsletter_clean.txt",
+    "doc_type": "NEWSLETTER",
+    "clean_control": true,
+    "violations": [],
+    "missing_disclosures": []
+  },
+  {
+    "file": "eval_20_brochure.txt",
+    "doc_type": "BROCHURE",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "SEC-206-4-1-PERF",
+        "text": "Our flagship fund returned 12% last year."
+      },
+      {
+        "rule_id": "FINRA-2210-URG",
+        "text": "This limited-time opportunity closes Friday."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-09"
+    ]
+  },
+  {
+    "file": "eval_21_account_agreement.txt",
+    "doc_type": "ACCOUNT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210",
+        "text": "We promise clients a steady 15% profit every single year."
+      },
+      {
+        "rule_id": "FINRA-2210-PROJ",
+        "text": "The fund will double in value within three years."
+      },
+      {
+        "rule_id": "REG-BI-CONFLICT",
+        "text": "Our advisors have no conflicts of interest."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-05",
+      "DISC-07"
+    ]
+  },
+  {
+    "file": "eval_22_investment_agreement.txt",
+    "doc_type": "INVESTMENT_AGREEMENT",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210",
+        "text": "We guarantee a 25% annual return on your investment."
+      },
+      {
+        "rule_id": "FINRA-2111",
+        "text": "This product is suitable for all investors."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-09",
+      "DISC-11"
+    ]
+  },
+  {
+    "file": "eval_23_newsletter.txt",
+    "doc_type": "NEWSLETTER",
+    "clean_control": false,
+    "violations": [
+      {
+        "rule_id": "FINRA-2210-EXAG",
+        "text": "With this strategy you simply can't lose."
+      },
+      {
+        "rule_id": "FINRA-2210-URG",
+        "text": "Only 3 spots left, so don't miss out!"
+      },
+      {
+        "rule_id": "FINRA-2210-PROJ",
+        "text": "Our model portfolio is on track to double by 2028."
+      },
+      {
+        "rule_id": "SEC-FEE",
+        "text": "There are no fees on any of our managed accounts."
+      }
+    ],
+    "missing_disclosures": [
+      "DISC-09"
+    ]
+  },
+  {
+    "file": "eval_24_brochure_clean.txt",
+    "doc_type": "BROCHURE",
+    "clean_control": true,
+    "violations": [],
+    "missing_disclosures": []
+  }
+]

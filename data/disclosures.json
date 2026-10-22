@@ -1,0 +1,78 @@
+{
+  "version": "mock-disclosures-2026.10",
+  "max_distance": 0.42,
+  "disclosures": [
+    {
+      "id": "DISC-01",
+      "title": "Investment risk disclosure",
+      "canonical": "Investing involves risk, including the possible loss of principal.",
+      "variants": [
+        "All investments involve risk and may lose value, including loss of the principal invested.",
+        "You may lose some or all of the money you invest."
+      ],
+      "severity": "HIGH",
+      "required_for": ["ACCOUNT_AGREEMENT", "INVESTMENT_AGREEMENT", "NEWSLETTER", "BROCHURE"]
+    },
+    {
+      "id": "DISC-09",
+      "title": "Past performance disclaimer",
+      "canonical": "Past performance does not guarantee future results.",
+      "variants": [
+        "Past performance is not indicative of future results.",
+        "Past performance is no guarantee of future returns."
+      ],
+      "severity": "HIGH",
+      "required_for": ["INVESTMENT_AGREEMENT", "NEWSLETTER", "BROCHURE"]
+    },
+    {
+      "id": "DISC-03",
+      "title": "Not FDIC insured",
+      "canonical": "Not FDIC insured. May lose value. No bank guarantee.",
+      "variants": [
+        "Investment products are not FDIC insured, are not bank guaranteed and may lose value."
+      ],
+      "severity": "MEDIUM",
+      "required_for": ["NEWSLETTER", "BROCHURE"]
+    },
+    {
+      "id": "DISC-05",
+      "title": "Fees and expenses disclosure",
+      "canonical": "Fees and expenses apply to this account and are described in the fee schedule.",
+      "variants": [
+        "Advisory fees and fund expenses will reduce your returns; see the fee schedule for details."
+      ],
+      "severity": "MEDIUM",
+      "required_for": ["ACCOUNT_AGREEMENT", "INVESTMENT_AGREEMENT"]
+    },
+    {
+      "id": "DISC-07",
+      "title": "Pre-dispute arbitration clause",
+      "canonical": "This agreement contains a pre-dispute arbitration clause.",
+      "variants": [
+        "All parties to this agreement are giving up the right to sue each other in court; disputes are resolved by arbitration."
+      ],
+      "severity": "HIGH",
+      "required_for": ["ACCOUNT_AGREEMENT"]
+    },
+    {
+      "id": "DISC-11",
+      "title": "Conflicts of interest disclosure",
+      "canonical": "Material conflicts of interest are disclosed in our Form ADV Part 2A brochure.",
+      "variants": [
+        "Our firm has conflicts of interest, which are described in Form ADV."
+      ],
+      "severity": "MEDIUM",
+      "required_for": ["INVESTMENT_AGREEMENT"]
+    },
+    {
+      "id": "DISC-12",
+      "title": "Not an offer to buy or sell",
+      "canonical": "This material is not an offer to buy or sell any security.",
+      "variants": [
+        "Nothing in this newsletter constitutes an offer or solicitation to buy or sell securities."
+      ],
+      "severity": "LOW",
+      "required_for": ["NEWSLETTER"]
+    }
+  ]
+}

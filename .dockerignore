@@ -1,0 +1,11 @@
+.venv
+**/__pycache__
+**/*.pyc
+runtime
+.env
+.git
+.github
+tests
+eval/last_run.json
+node_modules
+requirements.lock.txt

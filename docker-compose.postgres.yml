@@ -1,0 +1,53 @@
+# Postgres + dedicated analysis workers. Use together with docker-compose.yml:
+#   docker compose -f docker-compose.yml -f docker-compose.postgres.yml up -d --build
+#   docker compose -f docker-compose.yml -f docker-compose.postgres.yml up -d --scale worker=3
+# Set POSTGRES_PASSWORD in .env.
+services:
+  db:
+    image: postgres:16.4-alpine
+    environment:
+      POSTGRES_DB: compliance
+      POSTGRES_USER: compliance
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - compliance-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compliance -d compliance"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  app:
+    environment:
+      DATABASE_URL: postgresql://compliance:${POSTGRES_PASSWORD}@db:5432/compliance
+      WORKER_THREADS: "0"   # analysis runs in the worker service
+    depends_on:
+      db:
+        condition: service_healthy
+
+  worker:
+    image: compliance-review:latest
+    command: ["python", "-m", "app.worker"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      DATABASE_URL: postgresql://compliance:${POSTGRES_PASSWORD}@db:5432/compliance
+      WORKER_THREADS: "2"
+    volumes:
+      - compliance-data:/data
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      disable: true
+
+volumes:
+  compliance-pg:
